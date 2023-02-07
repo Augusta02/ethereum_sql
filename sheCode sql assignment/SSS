@@ -1,0 +1,29 @@
+
+--DROP TABLE IF EXISTS Country;
+create table if not exists Country(
+	countryid serial PRIMARY KEY,
+	countryName bpchar 
+);
+
+INSERT INTO Country VALUES(1, 'India');
+INSERT INTO Country VALUES(2, 'Nepal');
+INSERT INTO Country VALUES(3, 'United States');
+INSERT INTO Country VALUES(4, 'Canada');
+INSERT INTO Country VALUES(5, 'Sri Lanka');
+INSERT INTO Country VALUES(6, 'Brazil');
+
+create table if not exists StateName(
+	stateid serial PRIMARY KEY,
+	countryid serial,
+	statename bpchar,
+	constraint fk_StateName_countryid foreign key (countryid)
+	references Country (countryid)
+);
+
+
+INSERT INTO StateName VALUES(1, 1,'Maharasht');
+INSERT INTO StateName VALUES(2, 1,'Punjab');
+INSERT INTO StateName VALUES(3, 2,'Kath');
+INSERT INTO StateName VALUES(4, 3, 'California');
+INSERT INTO StateName VALUES(5, 3, 'Texas');
+INSERT INTO StateName VALUES(6, 4, 'Alberta');
